@@ -27,7 +27,7 @@
                         <img src="<?=  base_url()?>assets/img/imss.png" style="width: 30%">
                     </div>
                 </div>
-                <div class="p-lg panel md-whiteframe-z1 text-color m">
+                <div class="p-lg panel md-whiteframe-z1 text-color m" style="border-left: 4px solid #256659">
                     
                     <form name="form" class="login-form row-login">
                         <div class="md-form-group float-label">
@@ -40,7 +40,7 @@
                         </div>      
                         <div class="m-b-md">        
                             <label class="md-check">
-                                <input type="checkbox" checked=""><i class="indigo "></i> Recordarme
+                                <input type="checkbox" checked=""><i class="back-imss "></i> Recordarme
                             </label>
                         </div>
                         <button md-ink-ripple type="submit" class="md-btn md-raised pink btn-block p-h-md back-imss">Accesar</button>

@@ -19,27 +19,23 @@
                         </div>
                     </div>
                 </div>
-                <table class="table m-b-none" ui-jp="footable" data-filter="#filter" data-page-size="10">
+                <table class="table m-b-none" ui-jp="footable" data-filter="#filter" data-page-size="10" data-limit-navigation="7">
                     <thead>
                         <tr>
-                            <th >Usuario</th>
-                            <th data-hide="all">Matrícula</th>
+                            <th >Matrícula</th>
                             <th data-hide="phone">Nombre</th>
                             <th data-hide="phone">Apellidos</th>
                             <th data-hide="phone">Telefono</th>
-                            <th>Rol</th>
                             <th data-sort-ignore="true">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                        <?php foreach ($usuarios as $value) {?>
                         <tr id="<?=$value['empleado_id']?>">
-                            <td><?=$value['empleado_usuario']?></td>
                             <td><?=$value['empleado_matricula']?></td>
                             <td><?=$value['empleado_nombre']?> </td>
                             <td><?=$value['empleado_apellidos']?></td>
                             <td><?=$value['empleado_tel']?></td>
-                            <td><?=$value['tipo']?></td>
                             <td>
                                 <i data-id-accion="modificar" data-id="<?=$value['empleado_id']?>"  data-original-title="Modificar" class="tip acciones fa fa-pencil pointer icono-accion"></i>&nbsp&nbsp
                                 <i data-id-accion="eliminar"  data-id="<?=$value['empleado_id']?>" data-original-title="Eliminar" class="tip acciones fa fa-trash-o pointer icono-accion"></i>

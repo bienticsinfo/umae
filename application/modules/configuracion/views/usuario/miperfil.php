@@ -21,20 +21,16 @@
                             <form id="registrar-usuario">
                                 <div class="row row-sm">
                                     <div class="col-sm-3">
-                                        <input type="hidden" id="jtf_idEquipo" value="<?=$info[0]['equipo_id']?>">
                                         <input type="hidden" id="jtf_empleado_id" name="jtf_empleado_id" value="<?=$info[0]['empleado_id']?>">
-                                        <input type="hidden" id="empleado_contrasena" name="empleado_contrasena" value="<?=$info[0]['empleado_contrasena']?>">
-                                        <input type="hidden" id="jtf_empleado_estado" value="<?=$info[0]['empleado_estado']?>">
-                                        <input type="hidden" id="jtf_empleado_sexo" value="<?=$info[0]['empleado_sexo']?>">
                                         <div class="md-form-group">
-                                            <input class="md-input" name="empleado_matricula" required="" id="empleado_matricula" value="<?=$info[0]['empleado_matricula']?>">
+                                            <input class="md-input" name="empleado_matricula" readonly="" id="empleado_matricula" value="<?=$info[0]['empleado_matricula']?>">
                                             <label  style="opacity: 1">Matricula:</label>
                                             <span class="md-input-msg right"></span>
                                         </div>
 
                                         <div class="md-form-group" style="margin-top: -22px">
                                             <label  style="opacity: 1;">Sexo:</label>
-                                            <select name="empleado_sexo" required="" id="empleado_sexo" class="select2 width100 ">
+                                            <select name="empleado_sexo" required="" data-value="<?=$info[0]['empleado_sexo']?>" class="select2 width100 ">
                                                 <option value="M">M</option>
                                                 <option value="F">F</option>
                                             </select>
@@ -78,7 +74,7 @@
                                         </div>
                                         <div class="md-form-group">
 
-                                            <select id="empleado_estado" class="select2 md-input" name="empleado_estado" style="width: 100%">
+                                            <select data-value="<?=$info[0]['empleado_estado']?>" class="select2 md-input" name="empleado_estado" style="width: 100%">
                                                 <option value="">Seleccionar</option>
                                                 <option value="Aguascalientes">Aguascalientes</option>
                                                 <option value="Baja California">Baja California</option>
@@ -153,51 +149,6 @@
                                     </style>
                                 </div>
                             </form>
-                        </div>
-                        <div role="tabpanel" class="tab-pane animated fadeIn" id="tab2">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Cambiar usuario</label>
-                                    <br><br>
-                                    <form class="form-cambiar-user">
-                                        <div class=" md-form-group">
-                                            <input class="md-input" readonly="" value="<?=$info[0]['empleado_usuario']?>">
-                                            <label>Usuario actual</label>
-                                        </div>
-                                        <div class=" md-form-group">
-                                            <input class="md-input" name="new_user" id="new_user" required="">
-                                            <label>Nuevo usuario</label>
-                                        </div>
-                                        <div class=" md-form-group">
-                                            <input class="md-input" name="empleado_contrasena" id="empleado_contrasena_actual" type="password" required="">
-                                            <label>Contraseña actual</label>
-                                        </div>
-                                        <input type="hidden" name="csrf_token">
-                                        <button class="btn back-imss btn-cambiar-usuario" type="submit">Guardar</button>
-                                    </form>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Cambiar contraseña</label>
-                                    <br><br>
-                                    <form class="form-cambiar-pass">
-                                        <div class=" md-form-group">
-                                            <input class="md-input" name="empleado_contrasena_u" id="empleado_contrasena_u" type="password" required="">
-                                            <label>Nueva Contraseña</label>
-                                        </div>
-                                        <div class=" md-form-group">
-                                            <input class="md-input" name="empleado_contrasena_u_c" id="empleado_contrasena_u_c" type="password" required="">
-                                            <label>Confirmar Contraseña</label>
-                                        </div>
-                                        <div class=" md-form-group">
-                                            <input class="md-input" type="password" id="empleado_contrasena_actual_p" required=""> 
-                                            <label>Contraseña actual</label>
-                                        </div>
-                                        <input type="hidden" name="csrf_token">
-                                        <button class="btn back-imss" type="submit">Guardar</button>
-                                    </form>
-                                </div>
-                            </div>
-
                         </div>
                         <div role="tabpanel" class="tab-pane animated fadeIn" id="tab3">
                             <div class="row">

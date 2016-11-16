@@ -65,32 +65,29 @@ class Login extends Config{
         $sql=  $this->config_mdl->_get_data_condition('os_empleados',array(
             'empleado_matricula'=>  $this->input->post('empleado_matricula')
         ));
-        $sql_admin=  $this->config_mdl->_get_data_condition('os_empleados',array(
-            'empleado_matricula'=>  $this->input->post('empleado_matricula'),
-            'empleado_usuario'=>  'Administrador'
-        ));
         $sql_rol=  $this->config_mdl->_get_data('os_areas_acceso');
         $areas=array();
         foreach ($sql_rol as $value) {
             array_push($areas, $value['areas_acceso_nombre']) ;
         }
+        $ROLES=array( '1','2','3','4','5');
         
+        $area=  $this->input->post('empleado_area');
+        if($area=='Administrador'){
+           $AREA_ROL='1';
+        }else if($sql[0]['rol_id']=='2' || $area=='Medico Triage' || $area=='Consultorio CPR' || $area=='Consultorio Filtro 1' || $area=='Consultorio Filtro 2' || $area=='Consultorio Filtro 3' || $area=='Consultorio Filtro 4' || $area=='Consultorio Filtro 5' || $area=='Consultorio Neurocirugía' || $area=='Consultorio Cirugía General' || $area=='Consultorio Filtro 8' || $area=='Consultorio Maxilofacial' || $area=='Consultorio Cirugía Maxilofacial' || $area=='Observación Pediatría' || $area=='Observación Adultos Mujeres' || $area=='Observación Adultos Hombres'){
+            $AREA_ROL='2';
+        }else if($sql[0]['rol_id']=='3' || $area=='Enfermeria Triage'){
+           $AREA_ROL='3';
+        }else if($sql[0]['rol_id']=='4' || $area=='Hora Cero'){
+            $AREA_ROL='4';
+        }else if($sql[0]['rol_id']=='5' || $area=='Asistente Médica'){
+            $AREA_ROL='5';
+        }
         if(in_array($this->input->post('empleado_area'), $areas)){
-            if($this->input->post('empleado_area')=='Administrador'){
-                if(!empty($sql_admin)){
-                    $_SESSION['UMAE_USER']=$sql_admin[0]['empleado_id'];
-                    $_SESSION['UMAE_AREA']=  $this->input->post('empleado_area');
-                    $this->config_mdl->_update_data('os_empleados',array(
-                        'empleado_area_acceso'=>$this->input->post('empleado_area')
-                    ),array(
-                        'empleado_id'=>$sql[0]['empleado_id']
-                    ));
-                    $this->setOutput(array('ACCESS_LOGIN'=>'1'));
-                }else{
-                    $this->setOutput(array('ACCESS_LOGIN'=>  'ADMIN_NO_ENCONTRADA'));
-                }
-            }else{
-                if(!empty($sql)){
+            if(!empty($sql)){
+                if($AREA_ROL==$sql[0]['rol_id']){
+                    
                     $_SESSION['UMAE_USER']=$sql[0]['empleado_id'];
                     $_SESSION['UMAE_AREA']=  $this->input->post('empleado_area');
                     $this->config_mdl->_update_data('os_empleados',array(
@@ -98,11 +95,13 @@ class Login extends Config{
                     ),array(
                         'empleado_id'=>$sql[0]['empleado_id']
                     ));
-                    $this->setOutput(array('ACCESS_LOGIN'=>'1'));
+                    $this->setOutput(array('ACCESS_LOGIN'=>'ACCESS'));
                 }else{
-                    $this->setOutput(array('ACCESS_LOGIN'=>  'MATRICULA_NO_ENCONTRADA'));
+                    $this->setOutput(array('ACCESS_LOGIN'=>'AREA_NO_ROL'));
                 }
-            }
+            }else{
+                $this->setOutput(array('ACCESS_LOGIN'=>  'MATRICULA_NO_ENCONTRADA'));
+            }  
         }else{
             $this->setOutput(array('ACCESS_LOGIN'=>  'AREA_NO_ENCONTRADA'));
         }

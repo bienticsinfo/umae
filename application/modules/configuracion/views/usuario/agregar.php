@@ -11,40 +11,38 @@
                     <form id="registrar-usuario">
                         <div class="row row-sm">
                             <div class="col-sm-4">
-                                <input type="hidden" id="jtf_idTipo_Usuario" value="<?=$info[0]['idTipo_Usuario']?>">
-                                <input type="hidden" id="jtf_idEquipo" value="<?=$info[0]['idEquipo']?>">
-                                <input type="hidden" id="jtf_accion" name="jtf_accion" value="<?=$_GET['a']?>">
-                                <input type="hidden" id="jtf_empleado_id" name="jtf_empleado_id" value="<?=$info[0]['empleado_id']?>">
-                                <input type="hidden" id="empleado_fecha_registro" name="empleado_fecha_registro">
-                                <input type="hidden" id="jtf_empleado_estado" value="<?=$info[0]['empleado_estado']?>">
-                                <input type="hidden" id="jtf_empleado_sexo" value="<?=$info[0]['empleado_sexo']?>">
+                                <input type="hidden" id="jtf_accion" name="jtf_accion"  value="<?=$_GET['a']?>">
+                                <input type="hidden"name="empleado_id" value="<?=$_GET['u']?>">
                                 <div class="md-form-group">
-                                    <input class="md-input" name="empleado_matricula" required="" id="empleado_matricula" value="<?=$info[0]['empleado_matricula']?>">
+                                    <input class="md-input" name="empleado_matricula" required="" value="<?=$info[0]['empleado_matricula']?>">
                                     <label  style="opacity: 1">Matricula:</label>
                                     <span class="md-input-msg right"></span>
                                 </div>
 
                                 <div class="md-form-group" style="margin-top: -22px">
                                     <label  style="opacity: 1;">Sexo:</label>
-                                    <select name="empleado_sexo" required="" id="empleado_sexo" class="select2 width100 ">
+                                    <select name="empleado_sexo"  class="select2 width100 " data-value="<?=$info[0]['empleado_sexo']?>">
                                         <option value="M">M</option>
-                                        <option value="F" selected="">F</option>
+                                        <option value="F">F</option>
                                     </select>
                                 </div>
                                 <div class="md-form-group">
-                                    <input class="md-input" name="empleado_tel" id="empleado_tel" value="<?=$info[0]['empleado_tel']?>">
+                                    <input class="md-input" name="empleado_tel" value="<?=$info[0]['empleado_tel']?>">
                                     <label  style="opacity: 1">Telefono:</label>
                                     <span class="md-input-msg right"></span>
                                 </div> 
                                 <div class="md-form-group">
-                                    <input class="md-input" name="empleado_email"  id="empleado_email" value="<?=$info[0]['empleado_email']?>">
+                                    <input class="md-input" name="empleado_email"  value="<?=$info[0]['empleado_email']?>">
                                     <label  style="opacity: 1">Email:</label>
                                     <span class="md-input-msg right"></span>
                                 </div>
-                                <div class="md-form-group">
-                                    <input class="md-input" name="empleado_usuario" required="" id="empleado_usuario" value="<?=$info[0]['empleado_usuario']?>">
-                                    <label  style="opacity: 1">Usuario:</label>
-                                    <span class="md-input-msg right"></span>
+                                <div class="form-group">
+                                    <label>Seleccionar Rol</label>
+                                    <select class="select2" name="rol_id" data-value="<?=$info[0]['rol_id']?>" style="width: 100%">
+                                    <?php foreach ($roles as $value) {?>
+                                        <option value="<?=$value['rol_id']?>"><?=$value['rol_nombre']?></option>
+                                    <?php }?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -68,13 +66,8 @@
                                     <input class="md-input" name="empleado_curp" id="empleado_curp" value="<?=$info[0]['empleado_curp']?>">
                                     <label  style="opacity: 1">CURP:</label>
                                     <span class="md-input-msg right"></span>
-                                </div>
-                                
-                                <div class="md-form-group">
-                                    <input class="md-input" name="empleado_contrasena" required="" id="empleado_contrasena" type="password" >
-                                    <label  style="opacity: 1">Contraseña</label>
-                                    <span class="md-input-msg right msj-pass"></span>
-                                </div>
+                                </div><br>
+                                <button  type="submit" class="btn-save md-btn md-raised m-b btn-fw back-imss waves-effect pull-right btn-block" style="margin-top: 10px">Guardar</button>
                             </div>
                             <div class="col-sm-4">
                                 <div class="md-form-group">
@@ -83,8 +76,7 @@
                                     <span class="md-input-msg right"></span>
                                 </div>
                                 <div class="md-form-group">
-
-                                    <select id="empleado_estado" class="select2 md-input" name="empleado_estado" style="width: 100%">
+                                    <select class="select2 md-input" name="empleado_estado" data-value="<?=$info[0]['empleado_estado']?>" style="width: 100%">
                                         <option value="">Seleccionar</option>
                                         <option value="Aguascalientes">Aguascalientes</option>
                                         <option value="Baja California">Baja California</option>
@@ -126,44 +118,20 @@
                                     <label  style="opacity: 1">Dirección:</label>
                                     <span class="md-input-msg right"></span>
                                 </div>
-                                <div class="md-form-group">
-                                    <select id="idEquipo" class="select2 md-input" name="idEquipo" style="width: 100%"></select>
-                                    <label  style="opacity: 1;">Equipo</label>
-                                </div>
-                                <div class="md-form-group">
-                                    <input class="md-input" name="empleado_contrasena_c" required="" id="empleado_contrasena_c" type="password">
-                                    <label  style="opacity: 1">Confirmar Contraseña</label>
-                                    <span class="md-input-msg right  msj-pass"></span>
-                                </div>
-                                <input type="hidden" name="csrf_token">
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="md-form-group">
-                                    <select id="idTipo_Usuario" name="idTipo_Usuario[]" class="select2 md-input" multiple="" style="width: 100%"></select>
-                                    <label style="opacity: 1">Seleccionar Roles</label>
-                                    <input type="hidden" name="roles_asignados" value="<?=$roles_asignados?>">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
                                 <div class="md-form-group" style="margin-top: -20px">
                                     <label>Turno</label>
-                                    <select name="empleado_turno" class="select2 empleado_turno width100" data-value="<?=$info[0]['empleado_turno']?>">
+                                    <select name="empleado_turno" class="select2 width100" data-value="<?=$info[0]['empleado_turno']?>">
                                         <option value="Matutino">Matutino</option>
                                         <option value="Vespertino">Vespertino</option>
                                         <option value="Nocturno">Nocturno</option>
                                         <option value="Jornada Acumulada">Jornada Acumulada</option>
                                     </select>
                                 </div>
-                                <br>
-                                <button  type="submit" class="btn-save md-btn md-raised m-b btn-fw back-imss waves-effect width-100 pull-right">Guardar</button>
+                                <input type="hidden" name="csrf_token">
                             </div>
-                            <div class="col-md-2">
-                                
-                            </div>
+
                         </div>
+                        
                     </form>
                 </div>
             </div>

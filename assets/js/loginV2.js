@@ -32,6 +32,7 @@ $(document).ready(function (){
                 el.find('button[type=submit]').html('<i class="fa fa-spinner fa-spin"></i> Espere por favor...').attr('disabled',true);
                 el.find('input[type=text]').attr('readonly',true);
             },success:function (data){
+                console.log(data)
                 switch (data.ACCESS_LOGIN){
                     case 'AREA_NO_ENCONTRADA':
                         msj_error_noti('EL AREA ESCRITA NO EXISTE');
@@ -39,10 +40,10 @@ $(document).ready(function (){
                     case 'MATRICULA_NO_ENCONTRADA':
                         msj_error_noti('LA MATRICULA ESCRITA NO EXISTE');
                         break;
-                    case 'ADMIN_NO_ENCONTRADA':
-                        msj_error_noti('ACCESO DENEGADO');
+                    case 'AREA_NO_ROL':
+                        msj_error_noti('NO TIENE PERMISOS PARA INGRESAR A ESTA AREA');
                         break;
-                    case '1':
+                    case 'ACCESS':
                         location.href=base_url+'inicio';
                         break;    
                 }

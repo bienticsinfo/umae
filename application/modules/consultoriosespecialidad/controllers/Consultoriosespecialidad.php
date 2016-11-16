@@ -14,9 +14,12 @@
 require_once APPPATH.'modules/config/controllers/Config.php';
 class Consultoriosespecialidad extends Config{
     public function index() {
-        $UMAE_USER=$_SESSION['UMAE_USER'];
+        //$UMAE_USER=$_SESSION['UMAE_USER'];
         $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_consultorios_especialidad, os_triage
-            WHERE os_consultorios_especialidad.ce_asignado='$UMAE_USER' AND os_consultorios_especialidad.ce_status='Asignado' AND os_triage.triage_id=os_consultorios_especialidad.triage_id GROUP BY os_triage.triage_id");
+            WHERE os_consultorios_especialidad.ce_status='Asignado' AND os_triage.triage_id=os_consultorios_especialidad.triage_id GROUP BY os_triage.triage_id");
+//        $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_consultorios_especialidad, os_triage
+//            WHERE os_consultorios_especialidad.ce_asignado='$UMAE_USER' AND os_consultorios_especialidad.ce_status='Asignado' AND os_triage.triage_id=os_consultorios_especialidad.triage_id GROUP BY os_triage.triage_id");
+        
         $this->load->view('index',$sql);
     }
     public function solicitud_paciente() {
