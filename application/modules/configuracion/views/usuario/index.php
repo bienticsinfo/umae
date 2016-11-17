@@ -25,7 +25,7 @@
                             <th >Matrícula</th>
                             <th data-hide="phone">Nombre</th>
                             <th data-hide="phone">Apellidos</th>
-                            <th data-hide="phone">Telefono</th>
+                            <th data-hide="phone">Categoria</th>
                             <th data-sort-ignore="true">Acciones</th>
                         </tr>
                     </thead>
@@ -35,7 +35,7 @@
                             <td><?=$value['empleado_matricula']?></td>
                             <td><?=$value['empleado_nombre']?> </td>
                             <td><?=$value['empleado_apellidos']?></td>
-                            <td><?=$value['empleado_tel']?></td>
+                            <td><?=$value['rol_nombre']?></td>
                             <td>
                                 <i data-id-accion="modificar" data-id="<?=$value['empleado_id']?>"  data-original-title="Modificar" class="tip acciones fa fa-pencil pointer icono-accion"></i>&nbsp&nbsp
                                 <i data-id-accion="eliminar"  data-id="<?=$value['empleado_id']?>" data-original-title="Eliminar" class="tip acciones fa fa-trash-o pointer icono-accion"></i>
