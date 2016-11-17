@@ -70,18 +70,16 @@ class Login extends Config{
         foreach ($sql_rol as $value) {
             array_push($areas, $value['areas_acceso_nombre']) ;
         }
-        $ROLES=array( '1','2','3','4','5');
-        
         $area=  $this->input->post('empleado_area');
         if($area=='Administrador'){
            $AREA_ROL='1';
-        }else if($sql[0]['rol_id']=='2' || $area=='Medico Triage' || $area=='Consultorio CPR' || $area=='Consultorio Filtro 1' || $area=='Consultorio Filtro 2' || $area=='Consultorio Filtro 3' || $area=='Consultorio Filtro 4' || $area=='Consultorio Filtro 5' || $area=='Consultorio Neurocirugía' || $area=='Consultorio Cirugía General' || $area=='Consultorio Filtro 8' || $area=='Consultorio Maxilofacial' || $area=='Consultorio Cirugía Maxilofacial' || $area=='Observación Pediatría' || $area=='Observación Adultos Mujeres' || $area=='Observación Adultos Hombres'){
+        }if($area=='Medico Triage' || $area=='Consultorio CPR' || $area=='Consultorio Filtro 1' || $area=='Consultorio Filtro 2' || $area=='Consultorio Filtro 3' || $area=='Consultorio Filtro 4' || $area=='Consultorio Filtro 5' || $area=='Consultorio Neurocirugía' || $area=='Consultorio Cirugía General' || $area=='Consultorio Filtro 8' || $area=='Consultorio Maxilofacial' || $area=='Consultorio Cirugía Maxilofacial' || $area=='Observación Pediatría' || $area=='Observación Adultos Mujeres' || $area=='Observación Adultos Hombres'){
             $AREA_ROL='2';
-        }else if($sql[0]['rol_id']=='3' || $area=='Enfermeria Triage'){
+        }if($area=='Enfermeria Triage'){
            $AREA_ROL='3';
-        }else if($sql[0]['rol_id']=='4' || $area=='Hora Cero'){
+        }if($area=='Hora Cero'){
             $AREA_ROL='4';
-        }else if($sql[0]['rol_id']=='5' || $area=='Asistente Médica'){
+        }if($area=='Asistente Médica'){
             $AREA_ROL='5';
         }
         if(in_array($this->input->post('empleado_area'), $areas)){
