@@ -170,4 +170,34 @@ Class Usuario extends Config {
             $this->setOutput(array('accion'=>'2'));
         }  
     }
+    public function importar() {
+        $objPHPExcel= PHPExcel_IOFactory::load('assets/doc/PLANTILLA.xlsx');
+        $objHoja=$objPHPExcel->getActiveSheet()->toArray(null,true,true,true,true,true,true);
+        foreach ($objHoja as $iIndice=>$objCelda) {
+            if($objCelda['A']!='Matricula' || $objCelda['A']!='' || $objCelda['B']!='Nombre'){
+                if($objCelda['C']=='MEDICO NO FAMILIAR 80'){
+                    $rol='2';
+                }else if($objCelda['C']=='ASISTENTE MEDICA 80'){
+                    $rol='5';
+                }else if($objCelda['C']=='AUX DE ENFERMERIA GRAL 80' || $objCelda['C']=='ENFERMERA GENERAL 80' || $objCelda['C']=='ENFERMERA ESPECIALISTA 80'){
+                    $rol='3';
+                }else if($objCelda['C']=='AUX UNIV DE OFICINAS 80'){
+                    $rol='4';
+                }else{
+                    $rol='';
+                }
+                $nombre=  explode('/', $objCelda['B']);
+                $this->config_mdl->_insert('os_empleados',array(
+                    'empleado_matricula'=>$objCelda['A'],
+                    'empleado_nombre'=>$nombre[2],
+                    'empleado_apellidos'=>$nombre[0].' '.$nombre[1],
+                    'empleado_categoria'=>$objCelda['C'],
+                    'empleado_departamento'=>$objCelda['D'],
+                    'empleado_horario'=>$objCelda['E'],
+                    'rol_id'=>$rol
+                ));
+            }
+            
+        }
+    }
 }
