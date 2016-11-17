@@ -10,11 +10,11 @@
         <link rel="stylesheet" href="<?=  base_url()?>assets/libs/jquery/waves/dist/waves.css" type="text/css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/styles/material-design-icons.css" type="text/css" />
         <link href="<?=  base_url()?>assets/img/imss.png" rel="icon" type="image/png">
-        <link rel="stylesheet" href="<?=  base_url()?>assets/libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-        <link rel="stylesheet" href="<?=  base_url()?>assets/styles/font.css" type="text/css" />
-        <link rel="stylesheet" href="<?=  base_url()?>assets/styles/app.css" type="text/css" />
-        <link rel="stylesheet" href="<?=  base_url()?>assets/styles/style.css" type="text/css" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="<?=  base_url()?>assets/libs/jquery/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="<?=  base_url()?>assets/styles/font.css" rel="stylesheet" type="text/css" />
+        <link href="<?=  base_url()?>assets/styles/app.css" rel="stylesheet" type="text/css" />
+        <link href="<?=  base_url()?>assets/styles/style.css" rel="stylesheet" type="text/css" />
+        <link href="<?=  base_url()?>assets/libs/jquery-ui.css" rel="stylesheet">
         <link href="<?=  base_url()?>assets/libs/jquery-notifications/css/messenger.css" rel="stylesheet" type="text/css" media="screen"/>
         <link href="<?=  base_url()?>assets/libs/jquery-notifications/css/messenger-theme-flat.css" rel="stylesheet" type="text/css" media="screen"/>
         <link href="<?=  base_url()?>assets/libs/jquery-notifications/css/location-sel.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -52,8 +52,8 @@
         <script>var base_url='<?=  base_url()?>';</script>
         <script src="<?=  base_url()?>assets/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
         <script src="<?=  base_url()?>assets/libs/jquery/waves/dist/waves.js"></script>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
+        <script type="text/javascript" src="<?=  base_url()?>assets/libs/underscore-min.js"></script>
+        <script type="text/javascript" src="<?=  base_url()?>assets/libs/backbone-min.js"></script>
         <script src="<?=  base_url()?>assets/libs/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
         <script src="<?=  base_url()?>assets/libs/jquery-notifications/js/demo/demo.js" type="text/javascript" ></script>
         <script src="<?=  base_url()?>assets/libs/jquery-notifications/js/messenger.min.js" type="text/javascript"></script>
@@ -69,7 +69,7 @@
         <script src="<?=  base_url()?>assets/scripts/ui-waves.js"></script>
         <script src="<?=  base_url()?>assets/scripts/ui-client.js"></script>
         <script src="<?=  base_url()?>assets/js/jquery.cookie.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="<?=  base_url()?>assets/libs/jquery-ui.js"></script>
         <script src="<?=  base_url()?>assets/js/loginV2.js"></script>
     </body>
 </html>

@@ -12,11 +12,11 @@ $(document).ready(function (){
             type: 'POST',
             data:{
                 'csrf_token' : $.cookie('csrf_cookie'),
-                'areas_acces_id':$(this).attr('data-id')
+                'areas_acceso_id':$(this).attr('data-id')
             },success: function (data, textStatus, jqXHR) {
                 add_rol('edit',{
                     'areas_acceso_nombre':data[0]['areas_acceso_nombre'],
-                    'areas_acces_id':data[0]['areas_acces_id']
+                    'areas_acceso_id':data[0]['areas_acceso_id']
                 })
             },error: function (jqXHR, textStatus, errorThrown) {
                 

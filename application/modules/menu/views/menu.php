@@ -24,7 +24,7 @@
         <link href="<?=  base_url()?>assets/libs/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
         <link href="<?=  base_url()?>assets/libs/boostrap-clockpicker/bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css" media="screen"/>
         <link href="<?=  base_url()?>assets/libs/html5imageupload/demo.html5imageupload.css" rel="stylesheet" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+        <link href="<?=  base_url()?>assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?=  base_url()?>assets/styles/font.css" rel="stylesheet" type="text/css" />
         <link href="<?=  base_url()?>assets/styles/app.css" rel="stylesheet" type="text/css" />
         <link href="<?=  base_url()?>assets/styles/style.css" rel="stylesheet" type="text/css" />

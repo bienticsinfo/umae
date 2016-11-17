@@ -3,7 +3,6 @@
         </div>
         <audio id="player" src="<?=  base_url()?>assets/sound/sound.ogg"> </audio>
         <script>var base_url = "<?= base_url(); ?>"</script>
-        <script src="https://code.jquery.com/jquery-2.1.4.js" type="text/javascript"></script>
         <script src="<?=  base_url()?>assets/libs/jquery/jquery/dist/jquery.js"></script>
         <script src="<?=  base_url()?>assets/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
         <script src="<?=  base_url()?>assets/libs/jquery/waves/dist/waves.js"></script>
@@ -21,8 +20,8 @@
         <script src="<?=  base_url()?>assets/libs/pace/pace.min.js" type="text/javascript"></script>
         
         
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
+        <script src="<?=  base_url()?>assets/libs/underscore-min.js" type="text/javascript"></script>
+        <script src="<?=  base_url()?>assets/libs/backbone-min.js" type="text/javascript"></script>
         <script src="<?=  base_url()?>assets/libs/jquery-notifications/js/demo/demo.js" type="text/javascript" ></script>
         <script src="<?=  base_url()?>assets/libs/jquery-inputmask/jquery.inputmask.min.js" type="text/javascript"></script>
         <script src="<?=  base_url()?>assets/libs/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
@@ -103,14 +102,7 @@
         $(document).ready(function() {
             $('.popovers').popover();
             tip('.tip');
-            setTimeout(function() {
-                $('.footable').footable({
-                    breakpoints: {
-                        tablet: 768
-                    },
-                    pageNavigationSize: 2
-                });
-            }, 1000);
+     
         });
         function updateFootable (data,selector,pagination) {
             $(selector+' tbody').html(data);

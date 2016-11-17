@@ -34,8 +34,8 @@
                             <td><?=$value['areas_acceso_id']?></td>
                             <td><?=$value['areas_acceso_nombre']?></td>
                             <td>
-                                <i data-id="<?=$value['areas_acces_id']?>"  data-original-title="Modificar" class="tip fa fa-pencil pointer icono-accion"></i>&nbsp&nbsp
-                                <i data-id="<?=$value['areas_acces_id']?>" data-original-title="Eliminar" class="tip fa fa-trash-o pointer icono-accion"></i>
+                                <i data-id="<?=$value['areas_acceso_id']?>"  data-original-title="Modificar" class="tip fa fa-pencil pointer icono-accion"></i>&nbsp&nbsp
+                                <i data-id="<?=$value['areas_acceso_id']?>" data-original-title="Eliminar" class="tip fa fa-trash-o pointer icono-accion"></i>
                             </td>
                         </tr>
                         <?php } ?>

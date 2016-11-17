@@ -38,7 +38,7 @@ class Areas_acceso extends Config{
         }
     }
     public function get_data() {
-        $this->setOutput($this->config_mdl->_get_data_condition('os_areas_acceso',array('areas_acces_id'=>  $this->input->post('areas_acces_id'))));
+        $this->setOutput($this->config_mdl->_get_data_condition('os_areas_acceso',array('areas_acceso_id'=>  $this->input->post('areas_acceso_id'))));
     }
     public function delete_area() {
         if($this->config_mdl->_delete_data('os_areas_acceso',array('areas_acces_id'=>  $this->input->post('areas_acces_id')))
