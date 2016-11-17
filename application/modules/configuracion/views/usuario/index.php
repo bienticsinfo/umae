@@ -11,8 +11,24 @@
                 </div>
                 <div class="panel-body b-b b-light">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group m-b ">
+                        <form>
+                            <div class="col-md-2">
+                                <select class="select2 width100" name="search_by">
+                                    <option value="empleado_nombre">Nombre</option>
+                                    <option value="empleado_apellidos">Apellidos</option>
+                                    <option value="empleado_matricula">Matricula</option>
+                                    <option value="rol_nombre">Categoria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" name="like" class="form-control">
+                            </div>
+                            <div class="col-md-2" style="padding-left: 0px">
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                            </div>
+                        </form>
+                        <div class="col-md-4 col-md-offset-1">
+                            <div class="input-group m-b " style="margin-top: -16px">
                                 <span class="input-group-addon back-imss no-border" ><i class="fa fa-search"></i></span>
                                 <input type="text" class="form-control" id="filter" placeholder="Buscar...">
                             </div>
