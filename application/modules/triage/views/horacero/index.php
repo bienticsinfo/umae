@@ -4,12 +4,12 @@
         <div class="box-inner padding col-md-6 col-centered">
            <ol class="breadcrumb" style="margin-top: -20px">
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Triage</a></li>
+                <li><a href="#">Hora Cero</a></li>
             </ol>    
             <div class="panel panel-default " style="margin-top: -20px">
                 <div class="panel-heading p teal-900 back-imss">
                     <span style="font-size: 15px;font-weight: 500">
-                        <strong>TRIAGE</strong><br>
+                        <strong>HORA CERO</strong><br>
                     </span>
                     <a href="<?=  base_url()?>triage/indicador_horacero" class="md-btn md-fab m-b tip green waves-effect pull-right" data-original-title="Indicadores">
                         <i class="fa fa-line-chart fa-2x"></i>

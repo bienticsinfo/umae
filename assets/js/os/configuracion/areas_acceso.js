@@ -32,7 +32,7 @@ $(document).ready(function (){
                 type: 'POST',
                 data:{
                     'csrf_token' : $.cookie('csrf_cookie'),
-                    'areas_acces_id':el
+                    'areas_acceso_id':el
                 },beforeSend: function (xhr) {
                     msj_success_noti('Eliminando registro')  
                 },success: function (data, textStatus, jqXHR) {
