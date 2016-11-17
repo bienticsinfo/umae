@@ -29,7 +29,7 @@ class Areas_acceso extends Config{
         }else{
             if($this->config_mdl->_update_data('os_areas_acceso',
                 array('areas_acceso_nombre'=>  $this->input->post('areas_acceso_nombre')),
-                array('areas_acces_id'=>  $this->input->post('areas_acces_id')))
+                array('areas_acceso_id'=>  $this->input->post('areas_acceso_id')))
             ){
                 $this->setOutput(array('accion'=>'1'));
             }else{
@@ -41,7 +41,7 @@ class Areas_acceso extends Config{
         $this->setOutput($this->config_mdl->_get_data_condition('os_areas_acceso',array('areas_acceso_id'=>  $this->input->post('areas_acceso_id'))));
     }
     public function delete_area() {
-        if($this->config_mdl->_delete_data('os_areas_acceso',array('areas_acces_id'=>  $this->input->post('areas_acces_id')))
+        if($this->config_mdl->_delete_data('os_areas_acceso',array('areas_acceso_id'=>  $this->input->post('areas_acceso_id')))
         ){
             $this->setOutput(array('accion'=>'1'));
         }else{

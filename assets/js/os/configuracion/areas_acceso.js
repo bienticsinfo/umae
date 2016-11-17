@@ -68,7 +68,7 @@ $(document).ready(function (){
                                 dataType: 'json',
                                 type: 'POST',
                                 data:{
-                                    'areas_acces_id':data.areas_acces_id,
+                                    'areas_acceso_id':data.areas_acceso_id,
                                     'areas_acceso_nombre'   :$('body #areas_acceso_nombre').val(),
                                     'accion':accion,
                                     'csrf_token' : $.cookie('csrf_cookie')
