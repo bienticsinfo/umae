@@ -382,8 +382,6 @@ class Triage extends Config{
             'triage_paciente_afiliacion'=>  '',
             'triage_status'=>'En Captura',
             'triage_etapa'=>'0',
-            'triage_corte'=>'No Clasificado',
-            'triage_corte_am'=>'No Clasificado',
             'triage_horacero_h'=>  date('H:i'),
             'triage_horacero_f'=>  date('d/m/Y'),
             'triage_crea_horacero'=>$_SESSION['UMAE_USER']
