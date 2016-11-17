@@ -31,11 +31,13 @@ class Triage extends Config{
         $this->load->view('index');
     }
     public function triagemedico() {
-        $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_etapa='2' ORDER BY os_triage.triage_id DESC LIMIT 10");
+        $UMAE_USER=$_SESSION['UMAE_USER'];
+        $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_medico='$UMAE_USER' AND os_triage.triage_etapa='2' ORDER BY os_triage.triage_id DESC LIMIT 10");
         $this->load->view('v2/triagemedico',$sql);
     }
     public function triageenfermeria() {
-        $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_etapa='1' ORDER BY os_triage.triage_id DESC LIMIT 10");
+        $UMAE_USER=$_SESSION['UMAE_USER'];
+        $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_enfemeria='$UMAE_USER' AND os_triage.triage_etapa='1' ORDER BY os_triage.triage_id DESC LIMIT 10");
         $this->load->view('v2/triageenfermeria',$sql);
     }
     public function paso1() {
