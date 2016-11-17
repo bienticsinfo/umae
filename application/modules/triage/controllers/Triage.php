@@ -219,7 +219,7 @@ class Triage extends Config{
         $this->setOutput(array('total'=>  count($this->config_mdl->_get_data('os_triage')))); 
     }
     public function indicadores() { 
-        $triage_crea_horacero=$_SESSION['UMAE_USER'];
+        $UMAE_USER=$_SESSION['UMAE_USER'];
         if($_SESSION['UMAE_AREA']=='Enfermeria Triage'){
             $user_crea='triage_crea_enfemeria';
         }else{
@@ -236,40 +236,40 @@ class Triage extends Config{
         if($_GET['filter_select']=='by_fecha'){
             $fi=  $this->input->get('fi');
             $ff=  $this->input->get('ff');
-            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color  os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ORDER BY os_triage.triage_id DESC");
-            $sql['CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
-            $sql['NO_CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='1' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
-            $sql['triage_rojo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND os_triage.triage_color='Rojo' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
-            $sql['triage_naranja']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND os_triage.triage_color='Naranja' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
-            $sql['triage_amarillo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND os_triage.triage_color='Amarillo' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
-            $sql['triage_verde']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color  os_triage.triage_etapa='2' AND os_triage.triage_color='Verde' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
-            $sql['triage_azul']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND os_triage.triage_color='Azul' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ORDER BY os_triage.triage_id DESC");
+            $sql['CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND os_triage.triage_etapa='2' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
+            $sql['NO_CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='1' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
+            $sql['triage_rojo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND os_triage.triage_color='Rojo' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
+            $sql['triage_naranja']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND os_triage.triage_color='Naranja' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
+            $sql['triage_amarillo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND os_triage.triage_color='Amarillo' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
+            $sql['triage_verde']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND   os_triage.triage_etapa='2' AND os_triage.triage_color='Verde' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
+            $sql['triage_azul']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND os_triage.triage_color='Azul' AND os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ");
             
             
         }if($_GET['filter_select']=='by_hora'){
             $fi=  $this->input->get('fi');
             $hi=  $this->input->get('hi');
             $hf=  $this->input->get('hf');
-            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ORDER BY os_triage.triage_id DESC");
-            $sql['CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
-            $sql['NO_CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='1' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
-            $sql['triage_rojo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Rojo' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
-            $sql['triage_naranja']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Naranja' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
-            $sql['triage_amarillo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Amarillo' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
-            $sql['triage_verde']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Verde' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
-            $sql['triage_azul']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Azul' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ORDER BY os_triage.triage_id DESC");
+            $sql['CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
+            $sql['NO_CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='1' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
+            $sql['triage_rojo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Rojo' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
+            $sql['triage_naranja']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Naranja' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
+            $sql['triage_amarillo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Amarillo' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
+            $sql['triage_verde']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Verde' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
+            $sql['triage_azul']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Azul' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ");
                  
         }if($_GET['filter_select']=='by_like'){
             $filter_by=$_GET['filter_by'];
             $like=$_GET['like'];
-            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color_like  $filter_by LIKE '%$like%' ORDER BY os_triage.triage_id DESC");
-            $sql['CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND $filter_by LIKE '%$like%'");
-            $sql['NO_CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='1' AND $filter_by LIKE '%$like%'");
-            $sql['triage_rojo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Rojo' AND $filter_by LIKE '%$like%'");
-            $sql['triage_naranja']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Naranja' AND $filter_by LIKE '%$like%'");
-            $sql['triage_amarillo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Amarillo' AND $filter_by LIKE '%$like%'");
-            $sql['triage_verde']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Verde' AND $filter_by LIKE '%$like%'");
-            $sql['triage_azul']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.triage_etapa='2' AND triage_color='Azul' AND $filter_by LIKE '%$like%'");
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color_like os_triage.$user_crea='$UMAE_USER' AND  $filter_by LIKE '%$like%' ORDER BY os_triage.triage_id DESC");
+            $sql['CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND $filter_by LIKE '%$like%'");
+            $sql['NO_CLASIFICADOS']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='1' AND $filter_by LIKE '%$like%'");
+            $sql['triage_rojo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Rojo' AND $filter_by LIKE '%$like%'");
+            $sql['triage_naranja']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Naranja' AND $filter_by LIKE '%$like%'");
+            $sql['triage_amarillo']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Amarillo' AND $filter_by LIKE '%$like%'");
+            $sql['triage_verde']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color os_triage.$user_crea='$UMAE_USER' AND  os_triage.triage_etapa='2' AND triage_color='Verde' AND $filter_by LIKE '%$like%'");
+            $sql['triage_azul']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE $triage_color  os_triage.$user_crea='$UMAE_USER' AND os_triage.triage_etapa='2' AND triage_color='Azul' AND $filter_by LIKE '%$like%'");
             
         }
         
