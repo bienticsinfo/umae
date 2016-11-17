@@ -8,8 +8,8 @@ Class Usuario extends Config {
         $this->load->model('Usuario_m');
     }
     public function index() {
-        $data['usuarios'] = $this->config_mdl->_query('SELECT * FROM os_empleados, os_roles WHERE os_empleados.rol_id=os_roles.rol_id');
-        $this->load->view('usuario/index',$data);
+        $data['usuarios'] = $this->config_mdl->_query('SELECT * FROM os_empleados, os_roles WHERE os_empleados.rol_id=os_roles.rol_id LIMIT 100');
+        $this->load->view('usuario/index',$data); 
     }
     public function agregar() {
         $sql['info']=   $this->config_mdl->_get_data_condition('os_empleados',array('empleado_id'=>$this->input->get_post('u')));
