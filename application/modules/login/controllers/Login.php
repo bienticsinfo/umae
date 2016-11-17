@@ -77,7 +77,7 @@ class Login extends Config{
             $AREA_ROL='2';
         }if($area=='Enfermeria Triage'){
            $AREA_ROL='3';
-        }if($area=='AUX UNIV DE OFICINAS 80'){
+        }if($area=='Hora Cero'){
             $AREA_ROL='4';
         }if($area=='Asistente Médica'){
             $AREA_ROL='5';

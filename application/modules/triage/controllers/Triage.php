@@ -440,18 +440,18 @@ class Triage extends Config{
         $this->setOutput(array('option'=>$option));
     }
     public function indicador_horacero() {
-        $triage_crea_horacero=$_SESSION['UMAE_USER'];
+        $UMAE_USER=$_SESSION['UMAE_USER'];
         if($_GET['filter_select']=='by_fecha'){
             $fi=  $this->input->get('fi');
             $ff=  $this->input->get('ff');
-            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_horacero='$triage_crea_horacero' AND  os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ORDER BY os_triage.triage_id DESC");
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_horacero=$UMAE_USER AND  os_triage.triage_horacero_f BETWEEN '$fi' AND '$ff' ORDER BY os_triage.triage_id DESC");
             
         }if($_GET['filter_select']=='by_hora'){
             $fi=  $this->input->get('fi');
             $hi=  $this->input->get('hi');
             $hf=  $this->input->get('hf');
             
-            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_horacero='$triage_crea_horacero' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ORDER BY os_triage.triage_id DESC");
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_horacero=$UMAE_USER AND os_triage.triage_horacero_f='$fi' AND os_triage.triage_horacero_h BETWEEN '$hi' AND '$hf' ORDER BY os_triage.triage_id DESC");
               
         }
         $this->load->view('horacero/indicador_horacero',$sql);
