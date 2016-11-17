@@ -77,10 +77,12 @@ class Login extends Config{
             $AREA_ROL='2';
         }if($area=='Enfermeria Triage'){
            $AREA_ROL='3';
-        }if($area=='Hora Cero'){
+        }if($area=='AUX UNIV DE OFICINAS 80'){
             $AREA_ROL='4';
         }if($area=='Asistente Médica'){
             $AREA_ROL='5';
+        }if($area=='Urgencias'){
+            $AREA_ROL='6';
         }
         if(in_array($this->input->post('empleado_area'), $areas)){
             if(!empty($sql)){

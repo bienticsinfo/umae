@@ -29,16 +29,14 @@
                                 <div class="md-form-group">
                                     <input class="md-input" name="empleado_tel" value="<?=$info[0]['empleado_tel']?>">
                                     <label  style="opacity: 1">Telefono:</label>
-                                    <span class="md-input-msg right"></span>
                                 </div> 
                                 <div class="md-form-group">
                                     <input class="md-input" name="empleado_email"  value="<?=$info[0]['empleado_email']?>">
                                     <label  style="opacity: 1">Email:</label>
-                                    <span class="md-input-msg right"></span>
                                 </div>
                                 <div class="form-group">
                                     <label>Seleccionar Rol</label>
-                                    <select class="select2" name="rol_id" data-value="<?=$info[0]['rol_id']?>" style="width: 100%">
+                                    <select class="select2" name="rol_id" required="" data-value="<?=$info[0]['rol_id']?>" style="width: 100%">
                                     <?php foreach ($roles as $value) {?>
                                         <option value="<?=$value['rol_id']?>"><?=$value['rol_nombre']?></option>
                                     <?php }?>
@@ -47,13 +45,13 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="md-form-group">
-                                    <input class="md-input" name="empleado_nombre" required="" id="empleado_nombre" value="<?=$info[0]['empleado_nombre']?>">
+                                    <input class="md-input" name="empleado_nombre" required=""  value="<?=$info[0]['empleado_nombre']?>">
                                     <label  style="opacity: 1">Nombre:</label>
                                     <span class="md-input-msg right"></span>
                                 </div>
 
                                 <div class="md-form-group">
-                                    <input class="md-input fecha-calendar" name="empleado_fecha_nac" required="" id="empleado_fecha_nac" value="<?=$info[0]['empleado_fecha_nac']?>">
+                                    <input class="md-input fecha-calendar" name="empleado_fecha_nac"  value="<?=$info[0]['empleado_fecha_nac']?>">
                                     <label  style="opacity: 1">Fecha de Nacimiento:</label>
                                     <span class="md-input-msg right"></span>
                                 </div>

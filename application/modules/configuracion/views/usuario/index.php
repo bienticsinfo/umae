@@ -21,18 +21,20 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <input type="text" name="like" class="form-control">
+                                <input type="text" name="like" value="<?=$_GET['like']?>" class="form-control">
                             </div>
                             <div class="col-md-2" style="padding-left: 0px">
                                 <button type="submit" class="btn btn-primary">Buscar</button>
                             </div>
                         </form>
+                        <?php if($_GET['like']){?>
                         <div class="col-md-4 col-md-offset-1">
                             <div class="input-group m-b " style="margin-top: -16px">
                                 <span class="input-group-addon back-imss no-border" ><i class="fa fa-search"></i></span>
-                                <input type="text" class="form-control" id="filter" placeholder="Buscar...">
+                                <input type="text" class="form-control" id="filter" placeholder="Filtrar resultados">
                             </div>
                         </div>
+                        <?php }?>
                     </div>
                 </div>
                 <table class="table m-b-none" ui-jp="footable" data-filter="#filter" data-page-size="10" data-limit-navigation="7">

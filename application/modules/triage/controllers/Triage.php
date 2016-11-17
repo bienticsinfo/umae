@@ -219,6 +219,14 @@ class Triage extends Config{
         $this->setOutput(array('total'=>  count($this->config_mdl->_get_data('os_triage')))); 
     }
     public function indicadores() { 
+        $triage_crea_horacero=$_SESSION['UMAE_USER'];
+        if($_SESSION['UMAE_AREA']=='Enfermeria Triage'){
+            $user_crea='triage_crea_enfemeria';
+        }else{
+            $user_crea='triage_crea_medico';
+        } 
+         
+         
         if($_GET['triage_color']=='Todos'){
             $triage_color="";
         }else{
@@ -430,5 +438,22 @@ class Triage extends Config{
         }
         $option.='<option selected value="0;Filtro">Filtro</option>';
         $this->setOutput(array('option'=>$option));
+    }
+    public function indicador_horacero() {
+        $triage_crea_horacero=$_SESSION['UMAE_USER'];
+        if($_GET['filter_select']=='by_fecha'){
+            $fi=  $this->input->get('fi');
+            $ff=  $this->input->get('ff');
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_horacero='$triage_crea_horacero' AND  os_triage.triage_fecha BETWEEN '$fi' AND '$ff' ORDER BY os_triage.triage_id DESC");
+            
+        }if($_GET['filter_select']=='by_hora'){
+            $fi=  $this->input->get('fi');
+            $hi=  $this->input->get('hi');
+            $hf=  $this->input->get('hf');
+            
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage WHERE os_triage.triage_crea_horacero='$triage_crea_horacero' AND os_triage.triage_fecha='$fi' AND os_triage.triage_hora BETWEEN '$hi' AND '$hf' ORDER BY os_triage.triage_id DESC");
+              
+        }
+        $this->load->view('horacero/indicador_horacero',$sql);
     }
 }

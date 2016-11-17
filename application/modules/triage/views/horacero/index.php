@@ -11,6 +11,9 @@
                     <span style="font-size: 15px;font-weight: 500">
                         <strong>TRIAGE</strong><br>
                     </span>
+                    <a href="<?=  base_url()?>triage/indicador_horacero" class="md-btn md-fab m-b tip green waves-effect pull-right" data-original-title="Indicadores">
+                        <i class="fa fa-line-chart fa-2x"></i>
+                    </a>
                     <a  md-ink-ripple="" class="agregar-horacero-paciente md-btn md-fab m-b tip green waves-effect pull-right" data-original-title="Generar Ticket">
                         <i class="fa fa-clock-o fa-3x"></i>
                     </a>
