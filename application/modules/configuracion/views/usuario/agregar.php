@@ -34,14 +34,7 @@
                                     <input class="md-input" name="empleado_email"  value="<?=$info[0]['empleado_email']?>">
                                     <label  style="opacity: 1">Email:</label>
                                 </div>
-                                <div class="form-group">
-                                    <label>Seleccionar Rol</label>
-                                    <select class="select2" name="rol_id" required="" data-value="<?=$info[0]['rol_id']?>" style="width: 100%">
-                                    <?php foreach ($roles as $value) {?>
-                                        <option value="<?=$value['rol_id']?>"><?=$value['rol_nombre']?></option>
-                                    <?php }?>
-                                    </select>
-                                </div>
+                                
                             </div>
                             <div class="col-sm-4">
                                 <div class="md-form-group">
@@ -65,7 +58,6 @@
                                     <label  style="opacity: 1">CURP:</label>
                                     <span class="md-input-msg right"></span>
                                 </div><br>
-                                <button  type="submit" class="btn-save md-btn md-raised m-b btn-fw back-imss waves-effect pull-right btn-block" style="margin-top: 10px">Guardar</button>
                             </div>
                             <div class="col-sm-4">
                                 <div class="md-form-group">
@@ -127,7 +119,21 @@
                                 </div>
                                 <input type="hidden" name="csrf_token">
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group" style="margin-top: -20px">
+                                    <label>Seleccionar Rol</label>
+                                    <select class="select2" multiple="" name="rol_id[]" id="rol_id" required="" data-value="<?=$info[0]['empleado_roles']?>" style="width: 100%">
+                                    <?php foreach ($roles as $value) {?>
+                                        <option value="<?=$value['rol_id']?>"><?=$value['rol_nombre']?></option>
+                                    <?php }?>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-4">
+                                <button  type="submit" class="btn-save md-btn md-raised m-b btn-fw back-imss waves-effect pull-right btn-block" style="margin-top: 5px">Guardar</button>
 
+                            </div>
                         </div>
                         
                     </form>

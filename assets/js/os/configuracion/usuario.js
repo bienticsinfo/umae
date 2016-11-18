@@ -2,7 +2,7 @@ $(document).ready(function (){
     $('select[name=empleado_sexo]').select2('val',$('select[name=empleado_sexo]').data('value')).select2();
     $('select[name=empleado_estado]').select2('val',$('select[name=empleado_estado]').data('value')).select2();
     $('select[name=empleado_turno]').select2('val',$('select[name=empleado_turno]').data('value')).select2();
-    $('select[name=rol_id]').select2('val',$('select[name=rol_id]').data('value')).select2();
+    $('#rol_id').val($('#rol_id').data('value').split(',')).select2();
     $('#registrar-usuario').submit(function (e){
         e.preventDefault()
         $.ajax({

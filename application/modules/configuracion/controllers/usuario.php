@@ -11,7 +11,7 @@ Class Usuario extends Config {
         if($_GET['search_by']){
             $data['usuarios']=  $this->Usuario_m->filtrar_usuarios($_GET['search_by'],$_GET['like']);
         }else{
-            $data['usuarios'] = $this->config_mdl->_query('SELECT * FROM os_empleados, os_roles WHERE os_empleados.rol_id=os_roles.rol_id LIMIT 100');
+            $data['usuarios'] = $this->config_mdl->_query('SELECT * FROM os_empleados LIMIT 100');
         }
         $this->load->view('usuario/index',$data); 
     }
@@ -30,27 +30,6 @@ Class Usuario extends Config {
             $this->setOutput(array('ACCION'=>'EXISTE'));
         }
     }
-//    public function get_select() {
-//        $option_ro='';
-//        $option_em='';
-//        $option_eq='';
-//        foreach ($this->Usuario_m->_get_roles() as $value) { 
-//            $option_ro.='<option value="'.$value['idTipo_Usuario'].'">'.$value['tipo'].'</option>';
-//        }
-//        foreach ($this->Usuario_m->_get_empleados() as $value) { 
-//            $option_em.='<option value="'.$value['idEmpleado'].'">'.$value['nombre'].' '.$value['apellido_paterno'].' '.$value['apellido_materno'].' ('.$value['matricula'].')</option>';
-//        }
-//        foreach ($this->Usuario_m->_get_equipos() as $value) { 
-//            $option_eq.='<option value="'.$value['equipo_id'].'">'.$value['equipo_ip'].'</option>';
-//        }
-//        $this->output->set_content_type('application/json')->set_output(json_encode(
-//                array('option_ro'=>$option_ro,'option_em'=>$option_em, 'option_eq'=>$option_eq)
-//        ));
-//    }
-    public function alta() {
-        $this->load->view('usuarios/alta');
-    }
-
     public function gestion() {
         $this->load->view('usuarios/gestion');
     }
@@ -63,6 +42,9 @@ Class Usuario extends Config {
         }
    }
    public function insert() {
+       foreach ($this->input->post('rol_id') as $rol_select) {
+           $roles.=$rol_select.',';
+        }
        $data=array(
            'empleado_matricula'=>       $this->input->post('empleado_matricula'),
            'empleado_nombre'=>          $this->input->post('empleado_nombre'),
@@ -77,19 +59,34 @@ Class Usuario extends Config {
            'empleado_perfil'=>          'default.png',
            'empleado_fecha_registro'=>  date('d/m/Y'), 
            'empleado_turno'=>           $this->input->post('empleado_turno'),
-           'rol_id'=>                   $this->input->post('rol_id')
+           //'rol_id'=>                   $this->input->post('rol_id'),
+           'empleado_roles'=>  trim($roles, ',')
            
        );
        if($this->input->post('jtf_accion')=='add'){
             $this->config_mdl->_insert('os_empleados',$data);
+            $sql_max=  $this->config_mdl->_get_last_id('os_empleados','empleado_id');
+            foreach ($this->input->post('rol_id') as $rol_select) {
+                $this->config_mdl->_insert('os_empleados_roles',array(
+                    'empleado_id'=>$sql_max,
+                    'rol_id'=>$rol_select
+                ));
+            }
             $this->setOutput(array('accion'=>'1'));
        }else{
-           unset($data['empleado_matricula']);
-           unset($data['empleado_fecha_registro']);
-           unset($data['empleado_perfil']);
+           unset($data['empleado_matricula']);unset($data['empleado_fecha_registro']);unset($data['empleado_perfil']);
            $this->config_mdl->_update_data('os_empleados',$data,array(
                'empleado_id'=>$this->input->post('empleado_id')
            ));
+           $this->config_mdl->_delete_data('os_empleados_roles',array(
+               'empleado_id'=>$this->input->post('empleado_id')
+           ));
+           foreach ($this->input->post('rol_id') as $rol_select) {
+                $this->config_mdl->_insert('os_empleados_roles',array(
+                    'empleado_id'=>$this->input->post('empleado_id'),
+                    'rol_id'=>$rol_select
+                ));
+            }
            $this->setOutput(array('accion'=>'1'));
        }
    }
@@ -198,8 +195,15 @@ Class Usuario extends Config {
                     'empleado_categoria'=>$objCelda['C'],
                     'empleado_departamento'=>$objCelda['D'],
                     'empleado_horario'=>$objCelda['E'],
-                    'rol_id'=>$rol
+                    'empleado_roles'=>$rol
                 ));
+                if($rol!=''){
+                    $sql_max=  $this->config_mdl->_get_last_id('os_empleados','empleado_id');
+                    $this->config_mdl->_insert('os_empleados_roles',array(
+                        'empleado_id'=>$sql_max,
+                        'rol_id'=>$rol
+                    ));
+                }
             }
             
         }

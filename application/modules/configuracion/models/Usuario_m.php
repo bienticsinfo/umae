@@ -75,9 +75,9 @@
     }
     public function filtrar_usuarios($by,$like) {
         return $this->db
-                ->where('os_empleados.rol_id=os_roles.rol_id')
+                //->where('os_empleados.rol_id=os_roles.rol_id')
                 ->like($by,$like)
-                ->get('os_empleados, os_roles')
+                ->get('os_empleados')
                 ->result_array();
     }
 }

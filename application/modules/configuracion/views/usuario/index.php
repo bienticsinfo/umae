@@ -53,7 +53,7 @@
                             <td><?=$value['empleado_matricula']?></td>
                             <td><?=$value['empleado_nombre']?> </td>
                             <td><?=$value['empleado_apellidos']?></td>
-                            <td><?=$value['rol_nombre']?></td>
+                            <td><?=$value['empleado_categoria']!='' ? $value['empleado_categoria'] : 'No especificado'?></td>
                             <td>
                                 <i data-id-accion="modificar" data-id="<?=$value['empleado_id']?>"  data-original-title="Modificar" class="tip acciones fa fa-pencil pointer icono-accion"></i>&nbsp&nbsp
                                 <i data-id-accion="eliminar"  data-id="<?=$value['empleado_id']?>" data-original-title="Eliminar" class="tip acciones fa fa-trash-o pointer icono-accion"></i>
