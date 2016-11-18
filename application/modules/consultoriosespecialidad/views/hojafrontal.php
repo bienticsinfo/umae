@@ -189,7 +189,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Explración Fisica</label>
+                                        <label>Exploración Física</label>
                                         <textarea class="form-control hf_exploracionfisica" maxlength="330" rows="3" name="hf_exploracionfisica"><?=$hojaforntal[0]['hf_exploracionfisica']?></textarea>
                                     </div>
                                     <div class="form-group">
@@ -302,10 +302,13 @@
                                                     <i class="blue"></i>No
                                                 </label>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
+                                                <input type="text" required="" name="asistentesmedicas_incapacidad_folio" value="<?=$am[0]['asistentesmedicas_incapacidad_folio']?>" class="form-control  hojafrontal-info" placeholder="Folio">
+                                            </div>
+                                            <div class="col-md-2">
                                                 <input type="text" name="asistentesmedicas_incapacidad_fi"  value="<?=$am[0]['asistentesmedicas_incapacidad_fi']?>"  required="" class="form-control d-m-y  hojafrontal-info" placeholder="Fecha de Inicio" style="margin-top: 13px">
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <input type="number" name="asistentesmedicas_incapacidad_da" value="<?=$am[0]['asistentesmedicas_incapacidad_da']?>" required="" class="form-control  hojafrontal-info" placeholder="Dias Autorizados" style="margin-top: 13px">
                                             </div>
                                             <div class="col-md-3" style="">
@@ -324,15 +327,12 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Folio</label>
-                                                <input type="text" name="asistentesmedicas_incapacidad_folio" value="<?=$am[0]['asistentesmedicas_incapacidad_folio']?>" class="form-control  hojafrontal-info" placeholder="Folio">
-                                            </div>
-                                            <div class="col-md-4">
+                                            
+                                            <div class="col-md-6">
                                                 <label>Médico Tratante</label>
                                                 <input type="text" name="asistentesmedicas_mt" value="<?=$am[0]['asistentesmedicas_mt']=='' ? $INFO_USER[0]['empleado_nombre'].' '.$INFO_USER[0]['empleado_apellidos'] : $am[0]['asistentesmedicas_mt'] ?>" class="form-control">
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label>Matricula</label>
                                                 <input type="text" name="asistentesmedicas_mt_m" value="<?=$am[0]['asistentesmedicas_mt_m']=='' ? $INFO_USER[0]['empleado_matricula']  : $am[0]['asistentesmedicas_mt_m']?>" class="form-control">
                                             </div>
@@ -356,7 +356,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tratamientos (400 caracteres como máximo)</label>
-                                        <textarea name="asistentesmedicas_tratamientos" required="" maxlength="400" class="form-control  hojafrontal-info" rows="3">><?=$am[0]['asistentesmedicas_tratamientos']?></textarea>
+                                        <textarea name="asistentesmedicas_tratamientos" required="" maxlength="400" class="form-control  hojafrontal-info" rows="3"><?=$am[0]['asistentesmedicas_tratamientos']?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Signos y Sintomas</label>

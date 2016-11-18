@@ -321,9 +321,11 @@ $(document).ready(function (e){
     })
     $('input[name=asistentesmedicas_incapacidad_am]').click(function (e){
         if($(this).val()=='Si'){
+            $('input[name=asistentesmedicas_incapacidad_folio]').attr('required',true).removeAttr('readonly');
             $('input[name=asistentesmedicas_incapacidad_fi]').attr('required',true).removeAttr('readonly');
             $('input[name=asistentesmedicas_incapacidad_da]').attr('required',true).removeAttr('readonly');
         }else{
+            $('input[name=asistentesmedicas_incapacidad_folio]').removeAttr('required',true).attr('readonly',true);
             $('input[name=asistentesmedicas_incapacidad_fi]').removeAttr('required',true).attr('readonly',true);
             $('input[name=asistentesmedicas_incapacidad_da]').removeAttr('required',true).attr('readonly',true);
         }
