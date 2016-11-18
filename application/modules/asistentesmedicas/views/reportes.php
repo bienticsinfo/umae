@@ -10,7 +10,7 @@
             </ol> 
             <div class="panel no-border">
                 <div class="panel-heading back-imss">
-                    <span class="">Reportes</span>
+                    <span class="">REGISTROS CAPTURADOS: <?=  count($Gestion)?> Registros</span>
                 </div>
             </div>
             <div class="panel panel-default ">
