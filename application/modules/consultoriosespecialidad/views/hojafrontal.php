@@ -303,7 +303,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="text" required="" name="asistentesmedicas_incapacidad_folio" value="<?=$am[0]['asistentesmedicas_incapacidad_folio']?>" class="form-control  hojafrontal-info" placeholder="Folio">
+                                                <input type="text" required="" name="asistentesmedicas_incapacidad_folio" value="<?=$am[0]['asistentesmedicas_incapacidad_folio']?>" class="form-control  hojafrontal-info" style="margin-top: 13px" placeholder="Folio">
                                             </div>
                                             <div class="col-md-2">
                                                 <input type="text" name="asistentesmedicas_incapacidad_fi"  value="<?=$am[0]['asistentesmedicas_incapacidad_fi']?>"  required="" class="form-control d-m-y  hojafrontal-info" placeholder="Fecha de Inicio" style="margin-top: 13px">
