@@ -326,7 +326,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label>Folio</label>
-                                                <input type="text" name="asistentesmedicas_incapacidad_folio" value="<?=$am[0]['asistentesmedicas_incapacidad_folio']?>" required="" class="form-control  hojafrontal-info" placeholder="Folio">
+                                                <input type="text" name="asistentesmedicas_incapacidad_folio" value="<?=$am[0]['asistentesmedicas_incapacidad_folio']?>" class="form-control  hojafrontal-info" placeholder="Folio">
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Médico Tratante</label>
