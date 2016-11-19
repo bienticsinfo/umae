@@ -490,12 +490,12 @@ class Consultoriosespecialidad extends Config{
         if($_GET['filter_select']=='by_fecha'){
             $fi=  $this->input->get('fi');
             $ff=  $this->input->get('ff');
-            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_consultorios_especialidad, os_consultorios_especialidad_llamada,os_consultorios_especialidad_hf WHERE  $triage_color os_consultorios_especialidad.ce_crea='$UMAE_SESSION' AND  os_consultorios_especialidad_hf.triage_id=os_triage.triage_id AND os_triage.triage_id=os_consultorios_especialidad.triage_id AND os_consultorios_especialidad_llamada.triage_id=os_triage.triage_id AND  os_consultorios_especialidad.ce_fe BETWEEN '$fi' AND '$ff' ORDER BY os_triage.triage_id DESC");
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_consultorios_especialidad, os_consultorios_especialidad_llamada,os_consultorios_especialidad_hf WHERE  $triage_color os_consultorios_especialidad.ce_crea='$UMAE_SESSION' AND  os_consultorios_especialidad_hf.triage_id=os_triage.triage_id AND os_triage.triage_id=os_consultorios_especialidad.triage_id AND os_consultorios_especialidad_llamada.triage_id=os_triage.triage_id AND  os_consultorios_especialidad.ce_fe BETWEEN '$fi' AND '$ff' ORDER BY os_consultorios_especialidad_llamada.ce_id DESC");
             
             
         }if($_GET['filter_select']=='by_hora'){
             $fi=  $this->input->get('fi');  $hi=  $this->input->get('hi'); $hf=  $this->input->get('hf');
-            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_consultorios_especialidad, os_consultorios_especialidad_llamada,os_consultorios_especialidad_hf WHERE $triage_color os_consultorios_especialidad.ce_crea='$UMAE_SESSION' AND  os_consultorios_especialidad_hf.triage_id=os_triage.triage_id AND os_triage.triage_id=os_consultorios_especialidad.triage_id AND os_consultorios_especialidad_llamada.triage_id=os_triage.triage_id AND os_consultorios_especialidad.ce_fe='$fi' AND os_consultorios_especialidad.ce_he BETWEEN '$hi' AND '$hf' ORDER BY os_triage.triage_id DESC");
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_consultorios_especialidad, os_consultorios_especialidad_llamada,os_consultorios_especialidad_hf WHERE $triage_color os_consultorios_especialidad.ce_crea='$UMAE_SESSION' AND  os_consultorios_especialidad_hf.triage_id=os_triage.triage_id AND os_triage.triage_id=os_consultorios_especialidad.triage_id AND os_consultorios_especialidad_llamada.triage_id=os_triage.triage_id AND os_consultorios_especialidad.ce_fe='$fi' AND os_consultorios_especialidad.ce_he BETWEEN '$hi' AND '$hf' ORDER BY os_consultorios_especialidad_llamada.ce_id DESC");
                
         }
         $sql['medico']=$this->config_mdl->_get_data_condition('os_empleados',array(
