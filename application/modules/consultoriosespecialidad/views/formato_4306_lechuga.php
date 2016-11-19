@@ -22,15 +22,15 @@
             td, th {border: 1px solid black; }
             table {border-collapse: collapse;width: 100%;}
             td {vertical-align: bottom;}
-            .th_1{padding: 5px 2px 10px 2px;text-align: center}
-            .th_2{padding: 5px 10px 5px 10px;}
+            .th_1{padding: 5px 2px 15px 2px;text-align: center}
+            .th_2{padding: 5px 5px 15px 5px;}
         </style>
         <br><br>
         <table style="width: 100%">
             <?php $i=0; foreach ($Gestion as $value) { $i++;?>
             <tr>
                 <td class="th_1" style="font-size: 10px;width: 3.5%"><?=$i?></td>
-                <td style="width: 5%" class="th_2"></td>
+                <td style="width: 5%;font-size: 9px" class="th_2"><?=$value['ce_he']?></td>
                 <td style="width: 91%">
                     <table style="width: 95.5%;border-bottom: 0px;margin-left: -1px;margin-bottom: -3px;margin-top: -2px">
                         <tr>
@@ -52,7 +52,7 @@
                             <td style="width: 2.7%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-top: 0px"></td>
                             <td style="width: 2.8%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-top: 0px"></td>
                             <td style="width: 2.8%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-top: 0px"></td>
-                            <td style="width: 14.2%;padding: 3px;font-size: 8px;border-top: 0px"></td>
+                            <td style="width: 14.2%;padding: 3px;font-size: 8px;border-top: 0px"><?=$value['triage_paciente_afiliacion']?></td>
                             <td style="width: 1.5%;padding: 3px 2px 3px 2px;font-size: 8px;border-top: 0px"></td>
                             <td style="width: 1.5%;padding: 3px 2px 3px 2px;font-size: 8px;border-top: 0px"></td>
                             <td style="width: 1.5%;padding: 3px 2px 3px 2px;font-size: 8px;border-top: 0px"></td>
@@ -82,7 +82,7 @@
                             <td style="width: 2%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-bottom: 0px">13</td>
                             <td style="width: 2%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-bottom: 0px">14</td>
                             <td style="width: 2%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-bottom: 0px">15</td>
-                            <td style="width: 49.3%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-bottom: 0px" colspan="8"></td>
+                            <td style="width: 49.3%;padding: 3px 3.5px 3px 3.5px;font-size: 8px;border-bottom: 0px" colspan="8">Alta a <?=$value['hf_alta']?></td>
                             <td style="width: 2.7%;padding: 3px 5px 5px 3px;font-size: 8px;border-bottom: 0px"></td>
                             <td style="width: 2.7%;padding: 3px 5px 5px 3px; font-size: 8px;border-bottom: 0px"></td>
                             <td style="width: 2.7%;padding: 3px 5px 5px 3px;font-size: 8px;border-bottom: 0px"></td>
