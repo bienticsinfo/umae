@@ -477,15 +477,23 @@ class Consultoriosespecialidad extends Config{
         $this->setOutput(array('accion'=>'1'));
     }
     public function formato_4306_lechuga() {
-        $sql['info']=  $this->config_mdl->_get_data_condition('os_triage',array(
-            'triage_id'=>  $this->input->get('t')
-        ))[0];
-        $sql['hojafrontal']=  $this->config_mdl->_get_data_condition('os_consultorios_especialidad_hf',array(
-            'triage_id'=>  $this->input->get('t')
-        ))[0];
-        $sql['am']=  $this->config_mdl->_get_data_condition('os_asistentesmedicas',array(
-            'triage_id'=>  $this->input->get('t')
-        ))[0];
+        if($_GET['triage_color']=='Todos'){
+            $triage_color="";
+        }else{
+            $triage_color="os_triage.triage_color='".$_GET['triage_color']."' AND";
+            $triage_color_like="os_triage.triage_color='".$_GET['triage_color']."'";
+        }
+        if($_GET['filter_select']=='by_fecha'){
+            $fi=  $this->input->get('fi');
+            $ff=  $this->input->get('ff');
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_consultorios_especialidad, os_consultorios_especialidad_llamada WHERE  $triage_color os_triage.triage_id=os_consultorios_especialidad.triage_id AND os_consultorios_especialidad_llamada.triage_id=os_triage.triage_id AND  os_consultorios_especialidad.ce_fe BETWEEN '$fi' AND '$ff' ORDER BY os_triage.triage_id DESC");
+            
+            
+        }if($_GET['filter_select']=='by_hora'){
+            $fi=  $this->input->get('fi');  $hi=  $this->input->get('hi'); $hf=  $this->input->get('hf');
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_consultorios_especialidad, os_consultorios_especialidad_llamada WHERE $triage_color os_triage.triage_id=os_consultorios_especialidad.triage_id AND os_consultorios_especialidad_llamada.triage_id=os_triage.triage_id AND os_consultorios_especialidad.ce_fe='$fi' AND os_consultorios_especialidad.ce_he BETWEEN '$hi' AND '$hf' ORDER BY os_triage.triage_id DESC");
+               
+        }
         $sql['medico']=$this->config_mdl->_get_data_condition('os_empleados',array(
             'empleado_id'=>  $_SESSION['UMAE_USER']
         ))[0];

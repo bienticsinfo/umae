@@ -22,19 +22,19 @@
             td, th {border: 1px solid black; }
             table {border-collapse: collapse;width: 100%;}
             td {vertical-align: bottom;}
-            .th_1{padding: 5px 2px auto 2px;}
+            .th_1{padding: 5px 2px 10px 2px;text-align: center}
             .th_2{padding: 5px 10px 5px 10px;}
         </style>
         <br><br>
         <table style="width: 100%">
-            <?php for ($i = 1; $i <= 30; $i++) {?>
+            <?php $i=0; foreach ($Gestion as $value) { $i++;?>
             <tr>
-                <td class="th_1" style="font-size: 6px;width: 3.5%"><?=$i?></td>
+                <td class="th_1" style="font-size: 10px;width: 3.5%"><?=$i?></td>
                 <td style="width: 5%" class="th_2"></td>
                 <td style="width: 91%">
                     <table style="width: 95.5%;border-bottom: 0px;margin-left: -1px;margin-bottom: -3px;margin-top: -2px">
                         <tr>
-                            <th colspan="28" style="height: 10px"></th>
+                            <th colspan="28" style="height: 10px;font-size: 10px;padding-left: 5px;"><?=$value['triage_nombre']?></th>
                         </tr>
                         <tr style=";border-top: 0px;height: 20px">
                             <td style="width: 2%;padding: 3px 5px 3px 5px;font-size: 8px;border-top: 0px;;height: 5px"></td>

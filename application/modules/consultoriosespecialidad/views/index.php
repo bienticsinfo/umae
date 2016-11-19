@@ -72,9 +72,7 @@
                             <td><?=$value['ce_via']?></td>
                             <td><?=$value['ce_hf']==''? 'Sin Especificar' : $value['ce_hf'] ?></td>
                             <td class="text-center">
-                                <a href="<?=  base_url()?>consultoriosespecialidad/formato_4306_lechuga?t=<?=$value['triage_id']?>" target="_blank">
-                                    <i class="fa fa-file-pdf-o icono-accion tip" data-original-title="Generar Formato de 4.30.6 (lechuga)"></i>
-                                </a>&nbsp;
+                                
                                 <?php if($value['ce_hf']==''){?>
                                 <a href="<?=  base_url()?>consultoriosespecialidad/hojafrontal?t=<?=$value['triage_id']?>" >
                                     <i class="fa fa-pencil-square-o icono-accion tip" data-original-title="Requisitar Información"></i>
