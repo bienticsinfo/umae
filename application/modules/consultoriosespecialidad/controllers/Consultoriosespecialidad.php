@@ -476,4 +476,19 @@ class Consultoriosespecialidad extends Config{
         ));
         $this->setOutput(array('accion'=>'1'));
     }
+    public function formato_4306_lechuga() {
+        $sql['info']=  $this->config_mdl->_get_data_condition('os_triage',array(
+            'triage_id'=>  $this->input->get('t')
+        ))[0];
+        $sql['hojafrontal']=  $this->config_mdl->_get_data_condition('os_consultorios_especialidad_hf',array(
+            'triage_id'=>  $this->input->get('t')
+        ))[0];
+        $sql['am']=  $this->config_mdl->_get_data_condition('os_asistentesmedicas',array(
+            'triage_id'=>  $this->input->get('t')
+        ))[0];
+        $sql['medico']=$this->config_mdl->_get_data_condition('os_empleados',array(
+            'empleado_id'=>  $_SESSION['UMAE_USER']
+        ))[0];
+        $this->load->view('formato_4306_lechuga',$sql);
+    }
 }
