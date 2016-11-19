@@ -480,6 +480,7 @@ class Consultoriosespecialidad extends Config{
         $this->setOutput(array('accion'=>'1'));
     }
     public function formato_4306_lechuga() {
+        $UMAE_SESSION=$_SESSION['UMAE_USER'];
         if($_GET['triage_color']=='Todos'){
             $triage_color="";
         }else{
