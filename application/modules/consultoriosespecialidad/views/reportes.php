@@ -22,6 +22,7 @@
                             </div>
                         </div>
                     </span>
+                    <?php if($_GET['fi']){?>
                     <form action="<?=  base_url()?>consultoriosespecialidad/formato_4306_lechuga" target="_blank">
                         <input type="hidden" name="fi" value="<?=$_GET['fi']?>" class="color-black">
                         <input type="hidden" name="ff" value="<?=$_GET['ff']?>" class="color-black">
@@ -33,6 +34,7 @@
                         <i class="fa fa-file-pdf-o icono-accion" style="color: white!important"></i>
                         </button>
                     </form>
+                    <?php }?>
                 </div>
                 <div class="panel-body  show-hide-grafica-panel" >
                     <div class="" style="margin-bottom: 10px">
