@@ -30,7 +30,7 @@
                         <input type="hidden" name="triage_color" value="<?=$_GET['triage_color']?>" class="color-black">
                         <input type="hidden" name="hi" value="<?=$_GET['hi']?>" class="color-black">
                         <input type="hidden" name="hf" value="<?=$_GET['hf']?>" class="color-black">
-                        <button href="" type="submit" md-ink-ripple="" class="md-btn md-fab m-b green waves-effect pull-right tip " data-placement="left" data-original-title="Generar Formato de 4.30.6 (lechuga)">
+                        <button href="" type="submit" md-ink-ripple="" class="md-btn md-fab m-b green waves-effect pull-right tip " data-placement="left" data-original-title="Generar Formato 4.30.6 (lechuga)">
                         <i class="fa fa-file-pdf-o icono-accion" style="color: white!important"></i>
                         </button>
                     </form>
