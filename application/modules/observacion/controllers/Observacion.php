@@ -32,9 +32,21 @@ class Observacion extends Config{
         $sql=  $this->config_mdl->_get_data_condition('os_observacion',array(
             'triage_id'=>  $this->input->post('id')
         ));
+        if($_SESSION['UMAE_AREA']=='Observación Pediatría'){
+            $area='3';
+        }if($_SESSION['UMAE_AREA']=='Observación Adultos Mujeres'){
+            $area='4';
+        }if($_SESSION['UMAE_AREA']=='Observación Adultos Hombres'){
+            $area='5';
+        }
         if(!empty($sql)){
             if($sql[0]['observacion_fl']==''){
-                $this->setOutput(array('accion'=>'1','folio'=>$sql[0]['triage_id']));
+                if($sql[0]['observacion_area']==$area){
+                    $this->setOutput(array('accion'=>'1','folio'=>$sql[0]['triage_id']));
+                }else{
+                    $this->setOutput(array('accion'=>'4','folio'=>$sql[0]['triage_id']));
+                }
+                
             }else{
                 $this->setOutput(array('accion'=>'3','folio'=>$sql[0]['triage_id']));
             }

@@ -40,6 +40,9 @@ $(document).ready(function (e){
                     }if(data.accion=='3' && input.val()!=''){
                         msj_success_noti('EL N° PACIENTE YA SE ENCUENTRA REGISTRADO O SE HA DADO DE ALTA') 
                     }
+                    if(data.accion=='4' && input.val()!=''){
+                        msj_success_noti('EL N° PACIENTE NO CORRESPONDE A ESTA AREA') 
+                    }
                     input.val('');
                     e.preventDefault();
                 },error: function (e) {
