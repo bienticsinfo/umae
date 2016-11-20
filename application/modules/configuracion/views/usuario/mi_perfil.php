@@ -30,7 +30,7 @@ and open the template in the editor.
                                 <input type="file" name="thumb" style="height: 200px!important">
                             </div>
                             <input type="hidden" name="empleado_perfil" id="filename"  class="form-control" />
-                            <input type="hidden" name="empleado_id" value="<?=$_SESSION['idUser']?>"><br>
+                            <input type="hidden" name="empleado_id" value="<?=$_SESSION['UMAE_USER']?>"><br>
                             <input type="hidden" name="csrf_token" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <button class="btn btn-primary " type="submit">Guardar</button>
                         </div>	 

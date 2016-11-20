@@ -43,7 +43,7 @@ class Login extends Config{
         $area=  $this->input->post('empleado_area');
         if($area=='Administrador'){
            $AREA_ROL='1';
-        }if($area=='Medico Triage' || $area=='Consultorio CPR' || $area=='Consultorio Filtro 1' || $area=='Consultorio Filtro 2' || $area=='Consultorio Filtro 3' || $area=='Consultorio Filtro 4' || $area=='Consultorio Filtro 5' || $area=='Consultorio Neurocirugía' || $area=='Consultorio Cirugía General' || $area=='Consultorio Filtro 8' || $area=='Consultorio Maxilofacial' || $area=='Consultorio Cirugía Maxilofacial' || $area=='Observación Pediatría' || $area=='Observación Adultos Mujeres' || $area=='Observación Adultos Hombres'){
+        }if($area=='Medico Triage' || $area=='Consultorio CPR' || $area=='Consultorio Filtro 1' || $area=='Consultorio Filtro 2' || $area=='Consultorio Filtro 3' || $area=='Consultorio Filtro 4' || $area=='Consultorio Filtro 5' || $area=='Consultorio Neurocirugía' || $area=='Consultorio Cirugía General' || $area=='Consultorio Filtro 8' || $area=='Consultorio Maxilofacial' || $area=='Consultorio Cirugía Maxilofacial'){
             $AREA_ROL='2';
         }if($area=='Enfermeria Triage'){
            $AREA_ROL='3';
@@ -57,6 +57,12 @@ class Login extends Config{
             $AREA_ROL='7';
         }if($area=='Jefa Enfermeras'){
             $AREA_ROL='8';
+        }if($area=='Observación Adultos Hombres'){
+            $AREA_ROL='9';
+        }if($area=='Observación Adultos Mujeres'){
+            $AREA_ROL='10';
+        }if($area=='Observación Pediatría'){
+            $AREA_ROL='11';
         }
         if(in_array($this->input->post('empleado_area'), $areas)){
             if(!empty($sql)){

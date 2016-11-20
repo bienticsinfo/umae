@@ -18,16 +18,14 @@ class Observacion extends Config{
         parent::__construct();
     }
     public function index() {
-        $sql_info=  $this->config_mdl->_get_data_condition('os_empleados',array(
-            'empleado_id'=>$_SESSION['UMAE_USER']
-        ))[0];
+        $UMAE_USER=$_SESSION['UMAE_USER'];
         $sql['info']=  $this->config_mdl->_get_data_condition('os_areas',array(
             'area_nombre'=>$_SESSION['UMAE_AREA']
         ))[0];
-        $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_observacion , os_areas
-            WHERE os_triage.triage_id=os_observacion.triage_id AND os_areas.area_id=os_observacion.observacion_area AND
-            os_areas.area_nombre='".$sql_info['empleado_nombre']."'");
-        
+        $sql['GestionV2']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_observacion , os_areas, os_observacion_llamada
+            WHERE   os_triage.triage_id=os_observacion.triage_id AND 
+                    os_observacion.observacion_alta='' AND os_observacion.observacion_crea='$UMAE_USER' AND
+                    os_areas.area_id=os_observacion.observacion_area AND os_observacion.triage_id=os_observacion_llamada.triage_id");
         $this->load->view('index',$sql);
     }
     public function obtener_paciente() {
@@ -35,7 +33,12 @@ class Observacion extends Config{
             'triage_id'=>  $this->input->post('id')
         ));
         if(!empty($sql)){
-            $this->setOutput(array('accion'=>'1','folio'=>$sql[0]['triage_id']));
+            if($sql[0]['observacion_fl']==''){
+                $this->setOutput(array('accion'=>'1','folio'=>$sql[0]['triage_id']));
+            }else{
+                $this->setOutput(array('accion'=>'3','folio'=>$sql[0]['triage_id']));
+            }
+            
         }else{
             $this->setOutput(array('accion'=>'2'));
         }
@@ -66,8 +69,12 @@ class Observacion extends Config{
         
     }
     public function asignar_cama_paciente() {
+        $info=  $this->config_mdl->_get_data_condition('os_camas',array(
+            'cama_id'=>  $this->input->post('observacion_cama')
+        ))[0];
         $this->config_mdl->_update_data('os_observacion',array(
             'observacion_cama'=>  $this->input->post('observacion_cama'),
+            'observacion_cama_nombre'=>  $info['cama_nombre'],
             'observacion_fac'=> date('d/m/Y'),
             'observacion_hac'=>  date('H:i') 
         ),array(
@@ -82,6 +89,21 @@ class Observacion extends Config{
         $this->setOutput(array('accion'=>'1'));
     }
     public function alta_paciente() {
+        if($this->input->post('observacion_alta')=='Alta e ingreso quirófano'){
+            $this->config_mdl->_insert('os_quiforano',array(
+                'quiforano_fi'=>  date('d/m/Y'),
+                'quiforano_hi'=>  date('H:i'),
+                'triage_id'=>$this->input->post('triage_id')
+            ));
+        }if($this->input->post('observacion_alta')=='Alta e ingreso a hospitalización'){
+            $this->config_mdl->_insert('os_hospitalizacion',array(
+                'hospitalizacion_fi'=>  date('d/m/Y'),
+                'hospitalizacion_hi'=>  date('H:i'),
+                'triage_id'=>$this->input->post('triage_id')
+            ));
+        }
+        
+        
         $this->config_mdl->_update_data('os_observacion',array(
             'observacion_cama'=>  $this->input->post('observacion_cama'),
             'observacion_fs'=> date('d/m/Y'),
@@ -119,5 +141,39 @@ class Observacion extends Config{
             'area_id'=>$sql_info['empleado_area']
         ))[0];
         $this->load->view('cama_paciente',$sql);
+    }
+    public function llamar_paciente() {
+        $this->config_mdl->_insert('os_observacion_llamada',array(
+            'triage_id'=>  $this->input->post('triage_id')
+        ));
+        $this->config_mdl->_update_data('os_observacion',array(
+            'observacion_fl'=> date('d/m/Y'),
+            'observacion_hl'=>  date('H:i'),
+            'observacion_crea'=>$_SESSION['UMAE_USER']
+        ),array(
+            'triage_id'=>  $this->input->post('triage_id')
+        ));
+        $this->setOutput(array('accion'=>'1'));
+    }
+    public function reportes() {
+        $UMAE_SESSION=$_SESSION['UMAE_USER'];
+        if($_GET['filter_select']=='by_fecha'){
+            $fi=  $this->input->get('fi');
+            $ff=  $this->input->get('ff');
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_observacion , os_areas, os_observacion_llamada WHERE
+                    os_triage.triage_id=os_observacion.triage_id AND
+                    os_observacion.observacion_alta!='' AND
+                    os_observacion.observacion_crea='$UMAE_SESSION' AND os_areas.area_id=os_observacion.observacion_area AND os_observacion.triage_id=os_observacion_llamada.triage_id AND  os_observacion.observacion_fs BETWEEN '$fi' AND '$ff' ORDER BY os_observacion_llamada.observacion_llamada_id DESC");
+            
+            
+        }if($_GET['filter_select']=='by_hora'){
+            $fi=  $this->input->get('fi');  $hi=  $this->input->get('hi'); $hf=  $this->input->get('hf');
+            $sql['Gestion']=  $this->config_mdl->_query("SELECT * FROM os_triage, os_observacion , os_areas, os_observacion_llamada WHERE
+                    os_triage.triage_id=os_observacion.triage_id AND
+                    os_observacion.observacion_alta!='' AND
+                    os_observacion.observacion_crea='$UMAE_SESSION' AND os_areas.area_id=os_observacion.observacion_area AND os_observacion.triage_id=os_observacion_llamada.triage_id AND os_observacion.observacion_fs='$fi' AND os_observacion.observacion_hs BETWEEN '$hi' AND '$hf' ORDER BY os_observacion_llamada.observacion_llamada_id DESC");
+               
+        }
+        $this->load->view('reportes',$sql);
     }
 }

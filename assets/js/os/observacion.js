@@ -13,12 +13,32 @@ $(document).ready(function (e){
                 },success: function (data, textStatus, jqXHR) { 
                     console.log(data)
                     if(data.accion=='1' && input.val()!=''){
-                        window.open(base_url+'observacion/asignar_cama?t='+input.val(),'_blank');
-                    }else{
-                        if(input.val()!=''){
-                            msj_success_noti('EL N° PACIENTE NO SE ENCUENTRA REGISTRADO O NO SE ENCUENTRA EN ESTA ETAPA') 
+                        if(confirm('¿DESEA AGREGAR ESTE PACIENTE?')){
+                            $.ajax({
+                                url: base_url+"observacion/llamar_paciente",
+                                type: 'POST',
+                                dataType: 'json',
+                                data:{
+                                    'triage_id':input.val(),
+                                    'csrf_token':csrf_token
+                                },beforeSend: function (xhr) {
+                                    msj_loading();
+                                },success: function (data) {
+                                    bootbox.hideAll();
+                                    if(data.accion=='1'){
+                                        location.reload();
+                                    }
+                                },error: function (e) {
+                                    bootbox.hideAll();
+                                    msj_error_serve();
+                                }
+                            })
                         }
-                        
+                        //window.open(base_url+'observacion/asignar_cama?t='+input.val(),'_blank');
+                    }if(data.accion=='2' && input.val()!=''){
+                        msj_success_noti('EL N° PACIENTE NO SE ENCUENTRA REGISTRADO O NO SE ENCUENTRA EN ESTA ETAPA') 
+                    }if(data.accion=='3' && input.val()!=''){
+                        msj_success_noti('EL N° PACIENTE YA SE ENCUENTRA REGISTRADO O SE HA DADO DE ALTA') 
                     }
                     input.val('');
                     e.preventDefault();
